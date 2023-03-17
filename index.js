@@ -14,8 +14,8 @@ const connectBot = (username) => {
       version: '1.18.2'
     })
     bot.once('end', () => {
-        console.log(`Bot ${username} has been disconnected. Reconnecting in 5 seconds...`)
-        setTimeout(() => connectBot(username), 5000)
+        console.log(`Bot ${username} has been disconnected. Reconnecting in 10 seconds...`)
+        setTimeout(() => connectBot(username), 10000)
     })
         //bot.loadPlugin(autoeat)
     navigatePlugin(bot)
