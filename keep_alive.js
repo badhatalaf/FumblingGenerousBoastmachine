@@ -1,6 +1,14 @@
-var http = require('http');
+const express = require('express');
+const server = express();
 
-http.createServer(function (req, res) {
-  res.write("I'm alive");
-  res.end();
-}).listen(3000 || process.env.PORT);
+server.all(`/`, (req, res) => {
+    res.send(`Please connect me to a hosting website in-order to work 24/7.`);
+});
+
+function keepAlive() {
+    server.listen(3000, () => {
+        console.log(`24/7 Activation Complete`);
+    });
+}
+
+module.exports = { keepAlive };
