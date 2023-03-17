@@ -28,7 +28,7 @@ function botcode(bot, game, mail) {
     })
   
     const sellRods = () => {
-      setInterval(() => bot.chat('/ ds qsell'), 5000)
+      setInterval(() => bot.chat('/ ds qsell'), 10000)
     }
   
     const stopMoving = () => {
