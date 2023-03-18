@@ -172,7 +172,7 @@ function botcode(bot, game, mail) {
       else if (msg.includes('forward')) moveForward()
       else if (msg.includes('move left')) moveLeft()
       else if (msg.includes('stop moving')) stopMoving()
-      else if (msg.includes('tp')) bot.chat('/tpa Rorzin')
+      else if (msg.includes('tp ')) bot.chat('/tpa Rorzin')
       else if (msg.includes('look at me')) lookAtMe()
       else if (msg.includes('quit')) bot.quit()
       else if (msg.includes('sell rods')) sellRods()
@@ -225,6 +225,7 @@ function botcode(bot, game, mail) {
       if (msg.includes('Balance: ')) messageBoth(msg)
       if (msg.includes('To: Miscellaneous')) return
       if (msg.includes('PVP disabled in the Overworld')) return
+      if (msg.includes('Rorzin has requested to teleport to you')) bot.chat('/tpaccept')
       if (msg.includes('[island] ')) {
         var msgarr = msg.split(' ')
         var sender = msgarr[1].split(':')[0]
