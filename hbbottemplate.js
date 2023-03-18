@@ -272,8 +272,9 @@ function botcode(bot, game, mail) {
         }, 20000);
       }
       else if (game === 'hera') {
+        const killers = ['immelol.','JoinGothamDmtr.','appletvHD.']
         setTimeout(() => {
-          if (bot.username === 'immelol.' || bot.username === 'JoinGothamDmtr.') normalaura()
+          if (killers.includes(bot.username)) normalaura()
         }, 10000)
         setTimeout(() => {
           sellRods()
