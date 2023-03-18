@@ -1,10 +1,10 @@
 const keep_alive = require('./keep_alive.js')
 const mineflayer = require('mineflayer')
 // const { pathfinder, Movements, goals } = require('mineflayer-pathfinder')
-const pvp = require('mineflayer-pvp').plugin
-const armorManager = require('mineflayer-armor-manager')
-//const autoeat = require('mineflayer-auto-eat').default
-const navigatePlugin = require('mineflayer-navigate')(mineflayer)
+// const pvp = require('mineflayer-pvp').plugin
+// const armorManager = require('mineflayer-armor-manager')
+// const autoeat = require('mineflayer-auto-eat').default
+// const navigatePlugin = require('mineflayer-navigate')(mineflayer)
 // const GoalFollow = goals.GoalFollow
 
 const connectBot = (username) => {
@@ -18,10 +18,10 @@ const connectBot = (username) => {
         setTimeout(() => connectBot(username), 10000)
     })
         //bot.loadPlugin(autoeat)
-    navigatePlugin(bot)
+//     navigatePlugin(bot)
   // bot.loadPlugin(pathfinder)
-    bot.loadPlugin(pvp)
-    bot.loadPlugin(armorManager)
+//     bot.loadPlugin(pvp)
+//     bot.loadPlugin(armorManager)
 
     const template = require('./hbbottemplate')
     template.botcode(bot, 'hera', 'bot_mail')
