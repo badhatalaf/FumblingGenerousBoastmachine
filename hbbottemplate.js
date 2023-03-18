@@ -28,7 +28,7 @@ function botcode(bot, game, mail) {
     })
   
     const sellRods = () => {
-      setInterval(() => bot.chat('/ ds qsell'), 10000)
+      setInterval(() => bot.chat('/ ds qsell'), 5000)
     }
   
     const stopMoving = () => {
@@ -62,9 +62,6 @@ function botcode(bot, game, mail) {
           }, 900);
         }
       }, 1000);
-      setInterval(() => {
-        if (auraToggle) nearbyPlayers()
-      }, 5000)
     }
   
     //     bot.navigate.on('cannotFind', function (closestPath) {
@@ -139,14 +136,17 @@ function botcode(bot, game, mail) {
       bot.lookAt(pos)
     }
   
-    bot.on('physicsTick', lookAtBlaze)
+    bot.on('physicsTick', () => {
+      lookAtBlaze()
+      nearbyPlayers()
+    })
   
     const nearbyPlayers = () => {
-      const distance = 100
+      const distance = 50
       const nearplayers = Object.values(bot.entities).filter(e => e.type === 'player' && bot.entity.position.distanceTo(e.position) <= distance && e !== bot.entity).map(p => p.username)
       for (const key in nearplayers) {
         //  bot.chat('/m ' + nearplayers[key] + ' can i pls farm xp alone?')
-        const playerList = ['DR4C0N14N.', 'DR4C0N14N', 'TBG89.', 'Fus1', '_Lezly', 'LalaLexie.', 'Lynch12345.', 'OnlyRedOpps21.', 'abedqwer.', 'FlanNolan.', 'itdimk.', 'dANiael471.', 'MoosaImran.', 'Eren_Yaeger_.', 'SidraPlayz.', 'DrBaconXD.']
+        const playerList = ['ImNotJewelrich_.','DR4C0N14N.', 'DR4C0N14N', 'TBG89.', 'Fus1', '_Lezly', 'LalaLexie.', 'Lynch12345.', 'OnlyRedOpps21.', 'abedqwer.', 'FlanNolan.', 'itdimk.', 'dANiael471.', 'MoosaImran.', 'Eren_Yaeger_.', 'SidraPlayz.', 'DrBaconXD.']
         if (playerList.includes(nearplayers[key])) {
           bot.chat('/hub')
           setTimeout(() => {
@@ -225,6 +225,26 @@ function botcode(bot, game, mail) {
       if (msg.includes('Balance: ')) messageBoth(msg)
       if (msg.includes('To: Miscellaneous')) return
       if (msg.includes('PVP disabled in the Overworld')) return
+      if (msg.includes('[island] ')) {
+        var msgarr = msg.split(' ')
+        var sender = msgarr[1].split(':')[0]
+        if(sender === bot.username) return
+        msgarr.shift()
+        msgarr.shift()
+        var mainmsg = msgarr.join(' ')
+        var prefix = '/is chat '
+        setTimeout(() => chatgpt(mainmsg, prefix), 1500)
+      }
+      if (msg.includes('[Message] From ')) {
+        var msgarr = msg.split(' ')
+        var sender = msgarr[2]
+        msgarr.shift()
+        msgarr.shift()
+        var mainmsg = msgarr.join(' ')
+        if(sender === 'Rorzin') commands(mainmsg)
+        var prefix = '/m ' + sender
+        setTimeout(() => chatgpt(mainmsg, prefix), 1500)
+      }
       console.log(bot.username + ': ' + msg)
     })
   
@@ -236,28 +256,14 @@ function botcode(bot, game, mail) {
         if (sword) bot.equip(sword, 'hand')
       }, 150);
     })
-  
-    bot.on('chat', (target, msg) => {
-      if (msg.includes('From Rorzin ')) commands(msg)
-  
-      if (msg.toLowerCase().includes(bot.username) || msg.includes('From')) {
-        var prefix = ''
-        var msgarr = msg.split(' ')
-        var sender = ''
-        if (msgarr[0] === '[Message]') { sender = msgarr[2] }
-        else { sender = msgarr[1] }
-  
-        if (msg.includes('From')) prefix = '/m ' + sender
-  
-        setTimeout(() => {
-          if (msg.includes('afk')) bot.chat(prefix + ' i am not afk btw just farming xp lmao')
-          else if (msg.includes('macros')) bot.chat(prefix + ' no i am not on macros XD')
-          else if (msg.includes('hi') || msg.includes('hello') || msg.includes('sup')) bot.chat(prefix + " hi im kinda busy rn i'll get back at u later")
-          else if (msg.includes('hacker') || msg.includes('haker')) bot.chat(prefix + ' no i am not hacker lol')
-          else if (msg.includes('can') && msg.includes('give') && msg.includes('money')) bot.chat(prefix + ' fk off mother fucker go earn money instead of begging')
-        }, 2000);
-      }
-    })
+
+    const chatgpt = (msg, prefix) => {
+      if (msg.includes('afk')) bot.chat(prefix + ' i am not afk btw just farming xp lmao')
+      else if (msg.includes('macros')) bot.chat(prefix + ' no i am not on macros XD')
+      else if (msg.includes('hi') || msg.includes('hello') || msg.includes('sup')) bot.chat(prefix + " hi")
+      else if (msg.includes('hacker') || msg.includes('haker')) bot.chat(prefix + ' no i am not hacker lol')
+      else if (msg.includes('can') && msg.includes('give') && msg.includes('money')) bot.chat(prefix + ' fk off mother fucker go earn money instead of begging')
+    }
   
     var isOn = false
     bot.once('spawn', () => {
@@ -272,9 +278,9 @@ function botcode(bot, game, mail) {
         }, 20000);
       }
       else if (game === 'hera') {
-        const killers = ['immelol.','JoinGothamDmtr.','appletvHD.']
+        var killer = ['immelol.','JoinGothamDmtr.','appletvHD.']
         setTimeout(() => {
-          if (killers.includes(bot.username)) normalaura()
+          if (killer.includes(bot.username)) normalaura()
         }, 10000)
         setTimeout(() => {
           sellRods()
