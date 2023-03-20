@@ -146,7 +146,7 @@ function botcode(bot, game, mail) {
       const nearplayers = Object.values(bot.entities).filter(e => e.type === 'player' && bot.entity.position.distanceTo(e.position) <= distance && e !== bot.entity).map(p => p.username)
       for (const key in nearplayers) {
         //  bot.chat('/m ' + nearplayers[key] + ' can i pls farm xp alone?')
-        const playerList = ['ImNotJewelrich_.','DR4C0N14N.', 'DR4C0N14N', 'TBG89.', 'Fus1', '_Lezly', 'LalaLexie.', 'Lynch12345.', 'OnlyRedOpps21.', 'abedqwer.', 'FlanNolan.', 'itdimk.', 'dANiael471.', 'MoosaImran.', 'Eren_Yaeger_.', 'SidraPlayz.', 'DrBaconXD.']
+        const playerList = ['NekaShandra.','NekaShandra','ImNotJewelrich_.','DR4C0N14N.', 'DR4C0N14N', 'TBG89.', 'Fus1', '_Lezly', 'LalaLexie.', 'Lynch12345.', 'OnlyRedOpps21.', 'abedqwer.', 'FlanNolan.', 'itdimk.', 'dANiael471.', 'MoosaImran.', 'Eren_Yaeger_.', 'SidraPlayz.', 'DrBaconXD.']
         if (playerList.includes(nearplayers[key])) {
           bot.chat('/hub')
           setTimeout(() => {
