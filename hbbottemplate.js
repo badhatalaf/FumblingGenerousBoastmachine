@@ -227,26 +227,44 @@ function botcode(bot, game, mail) {
       if (msg.includes('To: Miscellaneous')) return
       if (msg.includes('PVP disabled in the Overworld')) return
       if (msg.includes('Rorzin has requested to teleport to you')) bot.chat('/tpaccept')
-      if (msg.includes('[island] ')) {
-        var msgarr = msg.split(' ')
-        var sender = msgarr[1].split(':')[0]
-        if(sender === bot.username) return
-        msgarr.shift()
-        msgarr.shift()
-        var mainmsg = msgarr.join(' ')
-        var prefix = '/is chat '
-        setTimeout(() => chatgpt(mainmsg, prefix), 1500)
-      }
-      if (msg.includes('[Message] From ')) {
-        var msgarr = msg.split(' ')
-        var sender = msgarr[2]
-        msgarr.shift()
-        msgarr.shift()
-        var mainmsg = msgarr.join(' ')
-        if(sender === 'Rorzin') commands(mainmsg)
-        var prefix = '/m ' + sender
-        setTimeout(() => chatgpt(mainmsg, prefix), 1500)
-      }
+      if (msg.includes('[island] ') && msg.includes(bot.username)) {
+          var sender = msgarr[1].split(':')[0]
+          if(sender === bot.username) return
+          msgarr.shift()
+          msgarr.shift()
+          var mainmsg = msgarr.join(' ')
+          var prefix = '/is chat '
+          chatgpt(mainmsg, prefix)
+        }
+        else if (msg.includes('[Message] From ')) {
+          var sender = msgarr[2]
+          msgarr.shift()
+          msgarr.shift()
+          var mainmsg = msgarr.join(' ')
+          if(sender === 'Rorzin') {
+            commands(mainmsg)
+            return
+          }
+          var prefix = '/m ' + sender
+          chatgpt(mainmsg, prefix)
+        }
+        else {
+          var sender = ''
+          var ranks = ['[VIP]','[VIP+]','[VIP++]','[MVP]','[MVP+]','[MVP++]','[HERO]']
+          var tiers = ['[I]','[II]','[III]','[IV]','[V]']
+          if(ranks.includes(msgarr[0])) {
+            sender = msgarr[1]
+            msgarr.shift()
+          }
+          else sender = msgarr[0]
+          msgarr.shift()
+          if(tiers.includes(msgarr[0])) msgarr.shift()
+          var mainmsg = msgarr.join(' ')
+          if(sender === bot.username) return
+          if(mainmsg.includes(bot.username)) {
+            chatgpt(mainmsg, '')
+          }
+        }
 //       console.log(bot.username + ': ' + msg)
     })
   
@@ -259,13 +277,40 @@ function botcode(bot, game, mail) {
       }, 150);
     })
 
-    const chatgpt = (msg, prefix) => {
-      if (msg.includes('afk')) bot.chat(prefix + ' i am not afk btw just farming xp lmao')
-      else if (msg.includes('macros')) bot.chat(prefix + ' no i am not on macros XD')
-      else if (msg.includes('hi') || msg.includes('hello') || msg.includes('sup')) bot.chat(prefix + " hi")
-      else if (msg.includes('hacker') || msg.includes('haker')) bot.chat(prefix + ' no i am not hacker lol')
-      else if (msg.includes('can') && msg.includes('give') && msg.includes('money')) bot.chat(prefix + ' fk off mother fucker go earn money instead of begging')
-    }
+    const chatgpt = async (msg, prefix) => {
+        var msgarr = msg.split(' ')
+        var randomTimeResponse = (Math.random() * 1500) + 500
+        var normalResponses = ['dude leave me alone','i dont wanna talk rn','go away','leave me alone','i just dont wanna talk','just leave me alone','let me grind in peace','pls go away','i wanna grind in peace']
+        var response = normalResponses[Math.floor(Math.random() * normalResponses.length)]
+
+        var afkResponses = ['no','yes i am afk','no im not afk','dude i am not afk','i am not afk','nah','who is afk? im not','me not afk','not afk']
+        var hiInputs = ['hi','hello','helo','ello','sup','wasup','wadup','hola','hiya','howdy']
+        var hiResponses = ['hi','hello','helo','ello','sup','wadup','wasup','hola','hiya']
+        var haxInputs = ['hacker','hacking','hax','haker','cheater','cheating','haxing','cheat','cheats','hacks','hack']
+        var haxResponses = ['no','nah','im not hacking','no im not cheating','no im not hacking','who is hacking? ik im not','me no hax','how to hack?','no hax','no cheats']
+        var macrosResponses = ['no','nah','im not on macros','no i am not','no i am not using any macros','no macros','no idk how to setup macros :/']
+
+        if (msg.includes('afk')) {
+          response = afkResponses[Math.floor(Math.random() * afkResponses.length)]
+        }
+        else if (msg.includes('macros')) {
+          response = macrosResponses[Math.floor(Math.random() * macrosResponses.length)]
+        }
+
+        for(var i in haxInputs) if(msg.includes(haxInputs[i])) {
+          response = haxResponses[Math.floor(Math.random() * haxResponses.length)]
+        }
+
+        for(var i in msgarr) {
+          if(hiInputs.includes(msgarr[i])) {
+            response = hiResponses[Math.floor(Math.random() * hiResponses.length)]
+          }
+        }
+        
+        setTimeout(() => {
+          bot.chat(prefix + ' ' + response)
+        }, randomTimeResponse)
+      }
   
     var isOn = false
     bot.once('spawn', () => {
