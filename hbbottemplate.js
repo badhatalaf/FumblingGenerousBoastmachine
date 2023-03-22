@@ -151,7 +151,7 @@ function botcode(bot, game, mail) {
           bot.chat('/hub')
           setTimeout(() => {
             bot.chat('/game ' + game)
-          }, 30000)
+          }, 150000)
         }
       }
     }
@@ -246,7 +246,7 @@ function botcode(bot, game, mail) {
         var prefix = '/m ' + sender
         setTimeout(() => chatgpt(mainmsg, prefix), 1500)
       }
-      console.log(bot.username + ': ' + msg)
+//       console.log(bot.username + ': ' + msg)
     })
   
     bot.on('playerCollect', (collector, itemDrop) => {
@@ -279,7 +279,7 @@ function botcode(bot, game, mail) {
         }, 20000);
       }
       else if (game === 'hera') {
-        var killer = ['immelol.','JoinGothamDmtr.','appletvHD.']
+        var killer = ['immelol.','JoinGothamDmtr.','appletvHD.','ummyeah.']
         setTimeout(() => {
           if (killer.includes(bot.username)) normalaura()
         }, 10000)
