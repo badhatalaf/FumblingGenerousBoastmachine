@@ -220,8 +220,11 @@ function botcode(bot, game, mail) {
     //     }
   
     bot.on('messagestr', (msg) => {
+      var msgarr = msg.split(' ')
       if (msg.includes('That belongs to')) return
+      if (msg.includes(bot.username + ' was killed by')) return
       if (msg.includes('Sold')) return
+      if (msg.includes('Login at')) console.log(bot.username + ": " + msg)
       if (msg.includes('Login at')) console.log(msg)
       if (msg.includes('Balance: ')) messageBoth(msg)
       if (msg.includes('To: Miscellaneous')) return
