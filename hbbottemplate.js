@@ -222,6 +222,7 @@ function botcode(bot, game, mail) {
     bot.on('messagestr', (msg) => {
       if (msg.includes('That belongs to')) return
       if (msg.includes('Sold')) return
+      if (msg.includes('Login at')) console.log(msg)
       if (msg.includes('Balance: ')) messageBoth(msg)
       if (msg.includes('To: Miscellaneous')) return
       if (msg.includes('PVP disabled in the Overworld')) return
