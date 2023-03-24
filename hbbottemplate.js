@@ -146,7 +146,7 @@ function botcode(bot, game, mail) {
       const nearplayers = Object.values(bot.entities).filter(e => e.type === 'player' && bot.entity.position.distanceTo(e.position) <= distance && e !== bot.entity).map(p => p.username)
       for (const key in nearplayers) {
         //  bot.chat('/m ' + nearplayers[key] + ' can i pls farm xp alone?')
-        const playerList = ['NekaShandra.','NekaShandra','ImNotJewelrich_.','DR4C0N14N.', 'DR4C0N14N', 'TBG89.', 'Fus1', '_Lezly', 'LalaLexie.', 'Lynch12345.', 'OnlyRedOpps21.', 'abedqwer.', 'FlanNolan.', 'itdimk.', 'dANiael471.', 'MoosaImran.', 'Eren_Yaeger_.', 'SidraPlayz.', 'DrBaconXD.','Illvinia.','Aslari.','N41N0C4RD.','MabaMaba.','FransoyGlo','Undisputed_.','Omegadudy2.','Echo_1o1.','Mine_Craftier.','IHAVEBEENBETTER.','XPFORLIFE0TR9l.','Tr0ll.','Suhaibbhaiop.','lowkeyy_kevin.','EgirlNicole.','NvGTX.','NvRTX.','Zenalynn.','sph2012.','Thweef','_NOOBMaster69_','Leloush.','MrRius99.','frazxedYT.']
+        const playerList = ['NekaShandra.','NekaShandra','ImNotJewelrich_.','DR4C0N14N.', 'DR4C0N14N', 'TBG89.', 'Fus1', '_Lezly', 'LalaLexie.', 'Lynch12345.', 'OnlyRedOpps21.', 'abedqwer.', 'FlanNolan.', 'itdimk.', 'dANiael471.', 'MoosaImran.', 'Eren_Yaeger_.', 'SidraPlayz.', 'DrBaconXD.','Illvinia.','Aslari.','N41N0C4RD.','MabaMaba.','FransoyGlo','Undisputed_.','Omegadudy2.','Echo_1o1.','Mine_Craftier.','IHAVEBEENBETTER.','XPFORLIFE0TR9l.','Tr0ll.','Suhaibbhaiop.','lowkeyy_kevin.','EgirlNicole.','NvGTX.','NvRTX.','Zenalynn.','sph2012.','Thweef','_NOOBMaster69_','Leloush.','MrRius99.','frazxedYT.','Mia_28.']
         if (playerList.includes(nearplayers[key])) {
           bot.chat('/hub')
           setTimeout(() => {
@@ -222,10 +222,10 @@ function botcode(bot, game, mail) {
     bot.on('messagestr', (msg) => {
       var msgarr = msg.split(' ')
       if (msg.includes('That belongs to')) return
+      if (msg.includes('Welcome') && msg.includes('to Hera Skyblock')) return
       if (msg.includes(bot.username + ' was killed by')) return
       if (msg.includes('Sold')) return
       if (msg.includes('Login at')) console.log(bot.username + ": " + msg)
-      if (msg.includes('Login at')) console.log(msg)
       if (msg.includes('Balance: ')) messageBoth(msg)
       if (msg.includes('To: Miscellaneous')) return
       if (msg.includes('PVP disabled in the Overworld')) return
@@ -351,4 +351,3 @@ function botcode(bot, game, mail) {
   }
   
   module.exports = { botcode }
-  
