@@ -142,19 +142,26 @@ function botcode(bot, game, mail) {
     })
   
     const nearbyPlayers = () => {
-      const distance = 100
-      const nearplayers = Object.values(bot.entities).filter(e => e.type === 'player' && bot.entity.position.distanceTo(e.position) <= distance && e !== bot.entity).map(p => p.username)
-      for (const key in nearplayers) {
-        //  bot.chat('/m ' + nearplayers[key] + ' can i pls farm xp alone?')
-        const playerList = ['NekaShandra.','NekaShandra','ImNotJewelrich_.','DR4C0N14N.', 'DR4C0N14N', 'TBG89.', 'Fus1', '_Lezly', 'LalaLexie.', 'Lynch12345.', 'OnlyRedOpps21.', 'abedqwer.', 'FlanNolan.', 'itdimk.', 'dANiael471.', 'MoosaImran.', 'Eren_Yaeger_.', 'SidraPlayz.', 'DrBaconXD.','Illvinia.','Aslari.','N41N0C4RD.','MabaMaba.','FransoyGlo','Undisputed_.','Omegadudy2.','Echo_1o1.','Mine_Craftier.','IHAVEBEENBETTER.','XPFORLIFE0TR9l.','Tr0ll.','Suhaibbhaiop.','lowkeyy_kevin.','EgirlNicole.','NvGTX.','NvRTX.','Zenalynn.','sph2012.','Thweef','_NOOBMaster69_','Leloush.','MrRius99.','frazxedYT.','Mia_28.']
-        if (playerList.includes(nearplayers[key])) {
+        const distance = 10
+        const nearplayers = Object.values(bot.entities).filter(e => e.type === 'player' && bot.entity.position.distanceTo(e.position) <= distance && e !== bot.entity).map(p => p.username)
+        for (const key in nearplayers) {
+          //  bot.chat('/m ' + nearplayers[key] + ' can i pls farm xp alone?')
+          const playerList = ['NekaShandra.','NekaShandra','ImNotJewelrich_.','DR4C0N14N.', 'DR4C0N14N', 'TBG89.', 'Fus1', '_Lezly', 'LalaLexie.', 'Lynch12345.', 'OnlyRedOpps21.', 'abedqwer.', 'FlanNolan.', 'itdimk.', 'dANiael471.', 'MoosaImran.', 'Eren_Yaeger_.', 'SidraPlayz.', 'DrBaconXD.','Illvinia.','Aslari.','N41N0C4RD.','MabaMaba.','FransoyGlo','Undisputed_.','Omegadudy2.','Echo_1o1.','Mine_Craftier.','IHAVEBEENBETTER.','XPFORLIFE0TR9l.','Tr0ll.','Suhaibbhaiop.','lowkeyy_kevin.','EgirlNicole.','NvGTX.','NvRTX.','Zenalynn.','sph2012.','Thweef','_NOOBMaster69_','Leloush.','MrRius99.','frazxedYT.']
+          if (playerList.includes(nearplayers[key])) {
+            bot.chat('/hub')
+            setTimeout(() => {
+              bot.chat('/game ' + game)
+            }, 150000)
+          }
+        }
+
+        for(i in bot.players) if(bot.players[i].username === 'DR4C0N14N') {
           bot.chat('/hub')
-          setTimeout(() => {
-            bot.chat('/game ' + game)
-          }, 150000)
+            setTimeout(() => {
+              bot.chat('/game ' + game)
+            }, 600000)
         }
       }
-    }
   
     const joinagain = () => {
       bot.chat('/hub')
@@ -284,7 +291,7 @@ function botcode(bot, game, mail) {
         var msgarr = msg.split(' ')
         var randomTimeResponse = (Math.random() * 1500) + 500
         var normalResponses = ['dude leave me alone','i dont wanna talk rn','go away','leave me alone','i just dont wanna talk','just leave me alone','let me grind in peace','pls go away','i wanna grind in peace']
-        var response = normalResponses[Math.floor(Math.random() * normalResponses.length)]
+        var response = ''
 
         var afkResponses = ['no','yes i am afk','no im not afk','dude i am not afk','i am not afk','nah','who is afk? im not','me not afk','not afk']
         var hiInputs = ['hi','hello','helo','ello','sup','wasup','wadup','hola','hiya','howdy']
@@ -328,9 +335,8 @@ function botcode(bot, game, mail) {
         }, 20000);
       }
       else if (game === 'hera') {
-        var killer = ['immelol.','JoinGothamDmtr.','appletvHD.','ummyeah.']
         setTimeout(() => {
-          if (killer.includes(bot.username)) normalaura()
+          normalaura()
         }, 10000)
         setTimeout(() => {
           sellRods()
