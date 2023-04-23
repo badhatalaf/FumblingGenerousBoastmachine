@@ -236,7 +236,7 @@ function botcode(bot, game, mail) {
         if (msg.includes('Balance: ')) messageBoth(msg)
         if (msg.includes('To: Miscellaneous')) return
         if (msg.includes('PVP disabled in the Overworld')) return
-        if (msg.includes('Rorzin' && 'has requested to teleport to you')) bot.chat('/tpaccept')
+        if (msg.includes('Rorzin [I] has requested to teleport to you.')) bot.chat('/tpaccept')
         if (msg.includes('[island] ') && msg.includes(bot.username)) {
             var sender = msgarr[1].split(':')[0]
             if (sender === bot.username) return
