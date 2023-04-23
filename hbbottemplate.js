@@ -146,7 +146,7 @@ function botcode(bot, game, mail) {
         const nearplayers = Object.values(bot.entities).filter(e => e.type === 'player' && bot.entity.position.distanceTo(e.position) <= distance && e !== bot.entity).map(p => p.username)
         for (const key in nearplayers) {
             //  bot.chat('/m ' + nearplayers[key] + ' can i pls farm xp alone?')
-            const playerList = ['LalaLexie.', 'NekaShandra.', 'NekaShandra', 'ImNotJewelrich_.', 'DR4C0N14N.', 'DR4C0N14N', 'TBG89.', 'Fus1', '_Lezly', 'LalaLexie.', 'Lynch12345.', 'OnlyRedOpps21.', 'abedqwer.', 'FlanNolan.', 'itdimk.', 'dANiael471.', 'MoosaImran.', 'Eren_Yaeger_.', 'SidraPlayz.', 'DrBaconXD.', 'Illvinia.', 'Aslari.', 'N41N0C4RD.', 'MabaMaba.', 'FransoyGlo', 'Undisputed_.', 'Omegadudy2.', 'Echo_1o1.', 'Mine_Craftier.', 'IHAVEBEENBETTER.', 'XPFORLIFE0TR9l.', 'Tr0ll.', 'Suhaibbhaiop.', 'lowkeyy_kevin.', 'EgirlNicole.', 'NvGTX.', 'NvRTX.', 'Zenalynn.', 'sph2012.', 'Thweef', '_NOOBMaster69_', 'Leloush.', 'MrRius99.', 'frazxedYT.', 'ParimalYT.', 'Bobybhatt.', 'Qutie_', 'Diger1953.', 'VanishX.', 'CrazyCrafterZ.', 'VegitoX_.', 'Suvrajit.', 'Mine_Craftier.']
+            const playerList = ['LalaLexie.', 'NekaShandra.', 'NekaShandra', 'ImNotJewelrich_.', 'DR4C0N14N.', 'DR4C0N14N', 'TBG89.', 'Fus1', '_Lezly', 'LalaLexie.', 'Lynch12345.', 'OnlyRedOpps21.', 'abedqwer.', 'FlanNolan.', 'itdimk.', 'dANiael471.', 'MoosaImran.', 'Eren_Yaeger_.', 'SidraPlayz.', 'DrBaconXD.', 'Illvinia.', 'Aslari.', 'N41N0C4RD.', 'MabaMaba.', 'FransoyGlo', 'Undisputed_.', 'Omegadudy2.', 'Echo_1o1.', 'Mine_Craftier.', 'IHAVEBEENBETTER.', 'XPFORLIFE0TR9l.', 'Tr0ll.', 'Suhaibbhaiop.', 'lowkeyy_kevin.', 'EgirlNicole.', 'NvGTX.', 'NvRTX.', 'Zenalynn.', 'sph2012.', 'Thweef', '_NOOBMaster69_', 'Leloush.', 'MrRius99.', 'frazxedYT.', 'ParimalYT.', 'Bobybhatt.', 'Qutie_', 'Diger1953.', 'VanishX.', 'CrazyCrafterZ.', 'VegitoX_.', 'Suvrajit.', 'Mine_Craftier.', 'McCutieGirl.', 'Rozsa_', 'Paukstyte.', 'Nekoooo_.', 'xVqnish', 'potetoman.', 'ludak123.', 'ludak123']
             if (playerList.includes(nearplayers[key])) {
                 bot.chat('/hub')
                 setTimeout(() => {
@@ -155,7 +155,7 @@ function botcode(bot, game, mail) {
             }
         }
 
-        for (i in bot.players) if (bot.players[i].username === 'DR4C0N14N') {
+        for (i in bot.players) if (bot.players[i].username === 'DR4C0N14N' || bot.players[i].username === 'Fus1') {
             bot.chat('/hub')
             setTimeout(() => {
                 bot.chat('/game ' + game)
@@ -329,6 +329,9 @@ function botcode(bot, game, mail) {
         // if(bot.username === 'cesbot001.','cesbot002.','cesbot003.','cesbot004.','cesbot005.','quaif.','xbandsx.','danthedumfk.','jokerx.','Mirandez.','Neonxd.','Redeeznuts.','DrunkPlayer.') setInterval(() => bot.chat("/game demeter"), 100000)
         bot.chat('/game ' + game)
         bot.chat(msgme + 'im online')
+        setInterval(() => {
+            bot.chat('/game hera')
+        }, 300000)
         if (game === 'demeter') {
             setTimeout(() => {
                 normalaura()
