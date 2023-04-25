@@ -331,7 +331,7 @@ function botcode(bot, game, mail) {
         bot.chat(msgme + 'im online')
         setInterval(() => {
             bot.chat('/game hera')
-        }, 300000)
+        }, 600000)
         if (game === 'demeter') {
             setTimeout(() => {
                 normalaura()
