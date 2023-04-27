@@ -146,7 +146,7 @@ function botcode(bot, game, mail) {
         const nearplayers = Object.values(bot.entities).filter(e => e.type === 'player' && bot.entity.position.distanceTo(e.position) <= distance && e !== bot.entity).map(p => p.username)
         for (const key in nearplayers) {
             //  bot.chat('/m ' + nearplayers[key] + ' can i pls farm xp alone?')
-            const playerList = ['LalaLexie.', 'NekaShandra.', 'NekaShandra', 'ImNotJewelrich_.', 'DR4C0N14N.', 'DR4C0N14N', 'TBG89.', 'Fus1', '_Lezly', 'LalaLexie.', 'Lynch12345.', 'OnlyRedOpps21.', 'abedqwer.', 'FlanNolan.', 'itdimk.', 'dANiael471.', 'MoosaImran.', 'Eren_Yaeger_.', 'SidraPlayz.', 'DrBaconXD.', 'Illvinia.', 'Aslari.', 'N41N0C4RD.', 'MabaMaba.', 'FransoyGlo', 'Undisputed_.', 'Omegadudy2.', 'Echo_1o1.', 'Mine_Craftier.', 'IHAVEBEENBETTER.', 'XPFORLIFE0TR9l.', 'Tr0ll.', 'Suhaibbhaiop.', 'lowkeyy_kevin.', 'EgirlNicole.', 'NvGTX.', 'NvRTX.', 'Zenalynn.', 'sph2012.', 'Thweef', '_NOOBMaster69_', 'Leloush.', 'MrRius99.', 'frazxedYT.', 'ParimalYT.', 'Bobybhatt.', 'Qutie_', 'Diger1953.', 'VanishX.', 'CrazyCrafterZ.', 'VegitoX_.', 'Suvrajit.', 'Mine_Craftier.', 'McCutieGirl.', 'Rozsa_', 'Paukstyte.', 'Nekoooo_.', 'xVqnish', 'potetoman.', 'ludak123.', 'ludak123']
+            const playerList = ['LalaLexie.', 'NekaShandra.', 'NekaShandra', 'ImNotJewelrich_.', 'DR4C0N14N.', 'DR4C0N14N', 'TBG89.', 'Fus1', '_Lezly', 'LalaLexie.', 'Lynch12345.', 'OnlyRedOpps21.', 'abedqwer.', 'FlanNolan.', 'itdimk.', 'dANiael471.', 'MoosaImran.', 'Eren_Yaeger_.', 'SidraPlayz.', 'DrBaconXD.', 'Illvinia.', 'Aslari.', 'N41N0C4RD.', 'MabaMaba.', 'FransoyGlo', 'Undisputed_.', 'Omegadudy2.', 'Echo_1o1.', 'Mine_Craftier.', 'IHAVEBEENBETTER.', 'XPFORLIFE0TR9l.', 'Tr0ll.', 'Suhaibbhaiop.', 'lowkeyy_kevin.', 'EgirlNicole.', 'NvGTX.', 'NvRTX.', 'Zenalynn.', 'sph2012.', 'Thweef', '_NOOBMaster69_', 'Leloush.', 'MrRius99.', 'frazxedYT.', 'ParimalYT.', 'Bobybhatt.', 'Qutie_', 'Diger1953.', 'VanishX.', 'CrazyCrafterZ.', 'VegitoX_.', 'Suvrajit.', 'Mine_Craftier.', 'McCutieGirl.', 'Rozsa_', 'Paukstyte.', 'Nekoooo_.', 'xVqnish', 'potetoman.', 'ludak123.', 'ludak123', '_watery', 'Hybrid_Gamer.', 'Hybrid_Gamer']
             if (playerList.includes(nearplayers[key])) {
                 bot.chat('/hub')
                 setTimeout(() => {
@@ -244,7 +244,7 @@ function botcode(bot, game, mail) {
             msgarr.shift()
             var mainmsg = msgarr.join(' ')
             var prefix = '/is chat '
-            chatgpt(mainmsg, prefix)
+//             chatgpt(mainmsg, prefix)
         }
         else if (msg.includes('[Message] From ')) {
             var sender = msgarr[2]
@@ -256,7 +256,7 @@ function botcode(bot, game, mail) {
                 return
             }
             var prefix = '/m ' + sender
-            chatgpt(mainmsg, prefix)
+//             chatgpt(mainmsg, prefix)
         }
         else {
             var sender = ''
@@ -272,7 +272,7 @@ function botcode(bot, game, mail) {
             var mainmsg = msgarr.join(' ')
             if (sender === bot.username) return
             if (mainmsg.includes(bot.username)) {
-                chatgpt(mainmsg, '')
+//                 chatgpt(mainmsg, '')
             }
         }
         //       console.log(bot.username + ': ' + msg)
@@ -332,6 +332,7 @@ function botcode(bot, game, mail) {
         setInterval(() => {
             bot.chat('/game hera')
         }, 600000)
+        setInterval(sneak, 60000)
         if (game === 'demeter') {
             setTimeout(() => {
                 normalaura()
