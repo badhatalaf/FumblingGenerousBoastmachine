@@ -6,6 +6,7 @@ const mineflayer = require('mineflayer')
 // const autoeat = require('mineflayer-auto-eat').default
 // const navigatePlugin = require('mineflayer-navigate')(mineflayer)
 // const GoalFollow = goals.GoalFollow
+// eeeeeeee
 
 const connectBot = (username) => {
   const bot = mineflayer.createBot({
