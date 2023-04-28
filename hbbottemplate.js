@@ -142,7 +142,7 @@ function botcode(bot, game, mail) {
     })
 
     const nearbyPlayers = () => {
-        const distance = 100
+        const distance = 500
         const nearplayers = Object.values(bot.entities).filter(e => e.type === 'player' && bot.entity.position.distanceTo(e.position) <= distance && e !== bot.entity).map(p => p.username)
         for (const key in nearplayers) {
             //  bot.chat('/m ' + nearplayers[key] + ' can i pls farm xp alone?')
