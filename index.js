@@ -30,12 +30,11 @@ const connectBot = (username) => {
 }
 
 // Start multiple bots by calling connectBot with different usernames
-connectBot('guria872')
+connectBot('appletvHD')
 setTimeout(() => connectBot('immelol'), 2000)
 setTimeout(() => connectBot('ummyeah'), 4000)
 setTimeout(() => connectBot('JoinGotham1'), 6000)
 setTimeout(() => connectBot('JoinGothamDmtr'), 8000)
 setTimeout(() => connectBot('googlesucks'), 10000)
 setTimeout(() => connectBot('FeetLover'), 12000)
-setTimeout(() => connectBot('appletvHD'), 14000)
 // keep_alive.keepAlive()
