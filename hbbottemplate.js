@@ -5,6 +5,11 @@ function botcode(bot, game, mail) {
     const sneak = () => {
         bot.setControlState(control = 'sneak', true)
     }
+    
+    const jump = () => {
+        bot.setControlState('jump', true)
+        setTimeout(() => bot.clearControlStates(), 3000)
+    }
 
     const moveForward = () => {
         bot.setControlState(control = 'forward', true)
@@ -155,12 +160,12 @@ function botcode(bot, game, mail) {
             }
         }
 
-        for (i in bot.players) if (bot.players[i].username === 'DR4C0N14N' || bot.players[i].username === 'Fus1') {
-            bot.chat('/hub')
-            setTimeout(() => {
-                bot.chat('/game ' + game)
-            }, 600000)
-        }
+//         for (i in bot.players) if (bot.players[i].username === 'DR4C0N14N' || bot.players[i].username === 'Fus1') {
+//             bot.chat('/hub')
+//             setTimeout(() => {
+//                 bot.chat('/game ' + game)
+//             }, 600000)
+//         }
     }
 
     const joinagain = () => {
@@ -332,6 +337,7 @@ function botcode(bot, game, mail) {
         setInterval(() => {
             bot.chat('/game hera')
         }, 600000)
+        setInterval(jump, 60000)
         setInterval(sneak, 60000)
         if (game === 'demeter') {
             setTimeout(() => {
