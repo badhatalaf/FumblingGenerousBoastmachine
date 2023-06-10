@@ -337,7 +337,7 @@ function botcode(bot, game, mail) {
         setInterval(() => {
             bot.chat('/game hera')
         }, 600000)
-        setInterval(jump, 60000)
+        setInterval(jump, 55000)
         setInterval(sneak, 60000)
         if (game === 'demeter') {
             setTimeout(() => {
