@@ -232,6 +232,11 @@ bot.on('messagestr', (msg) => {
         chatgpt(mainmsg, '')
       }, 1500)
     }
+    
+    var scammerList = ['monstergamer173.', 'eroneffi.']
+    if (scammerList.includes(sender)) {
+      bot.chat('Above msg was sent by scammer ^^^. For more info, contact Rorzin')
+    }
   }
   console.log(bot.username + ': ' + msg)
 })
