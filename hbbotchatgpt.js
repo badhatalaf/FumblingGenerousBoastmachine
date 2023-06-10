@@ -224,7 +224,6 @@ bot.on('messagestr', (msg) => {
     var msgData = {}
     msgData[sender] = mainmsg
     everyMsg.add(msgData)
-    if (msg.toLowerCase().includes('to pay me') && (msg.toLowerCase().includes('first') || msg.toLowerCase().includes('1st'))) bot.chat('/pay ' + sender + ' 1000000')
 
     if (sender === bot.username) return
     if (mainmsg.includes(bot.username)) {
