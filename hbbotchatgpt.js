@@ -8,8 +8,6 @@ const fs = require('fs');
 const { join } = require('path');
 process.env.TZ = "America/New_York"
 
-bot.loadPlugin(tpsPlugin)
-
 // const configuration = new Configuration({
 //   apiKey: OPENAI_API_KEY,
 // });
@@ -314,7 +312,9 @@ const connectBot = (username) => {
   bot.once('end', () => {
       console.log(`Bot ${username} has been disconnected. Reconnecting in 20 seconds...`)
       setTimeout(() => connectBot(username), 20000)
-   })
+  })
+   
+  bot.loadPlugin(tpsPlugin)
   
   botCode(bot)
 }
