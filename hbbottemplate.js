@@ -38,6 +38,11 @@ function botcode(bot, game, mail) {
       if (!sellRodsEnabled) return
       bot.chat('/ ds qsell')
     }, 5000)
+    setInterval(() => {
+      for (const item of bot.inventory.slots) {
+        if (item && (item.name.includes('wooden_sword') || item.name.includes('stone_sword') || item.name.includes('iron_sword') || item.name.includes('golden_sword') || item.name.includes('helmet') || item.name.includes('chestplate') || item.name.includes('leggings') || item.name.includes('boots') || item.name.includes('bow'))) bot.tossStack(item)
+      }
+    }, 1000)
   }
 
   const stopMoving = () => {
@@ -148,9 +153,6 @@ function botcode(bot, game, mail) {
   bot.on('physicsTick', () => {
     lookAtBlaze()
     nearbyPlayers()
-    for (const item of bot.inventory.slots) {
-      if (item && (item.name.includes('wooden_sword') || item.name.includes('stone_sword') || item.name.includes('iron_sword') || item.name.includes('golden_sword') || item.name.includes('helmet') || item.name.includes('chestplate') || item.name.includes('leggings') || item.name.includes('boots') || item.name.includes('bow'))) bot.tossStack(item)
-    }
   })
 
   const nearbyPlayers = () => {
