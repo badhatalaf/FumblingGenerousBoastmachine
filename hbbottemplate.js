@@ -43,6 +43,7 @@ function botcode(bot, game, mail) {
         if (item && (item.name.includes('wooden_sword') || item.name.includes('stone_sword') || item.name.includes('iron_sword') || item.name.includes('golden_sword') || item.name.includes('helmet') || item.name.includes('chestplate') || item.name.includes('leggings') || item.name.includes('boots') || item.name.includes('bow'))) bot.tossStack(item)
       }
     }, 1000)
+    setInterval(lookAtBlaze, 1000)
   }
 
   const stopMoving = () => {
@@ -142,7 +143,7 @@ function botcode(bot, game, mail) {
   }
 
   const lookAtBlaze = () => {
-    const blazefilter = e => e.name === 'blaze'
+    const blazefilter = e => e.name === 'blaze' || e.name === 'zombie' || e.name === 'skeleton' || e.name === 'creeper' || e.name === 'enderman' || e.name === 'wither_skeleton' || e.name === 'spider'
     const blazeEntity = bot.nearestEntity(blazefilter)
     if (!blazeEntity) return
 
@@ -151,7 +152,6 @@ function botcode(bot, game, mail) {
   }
 
   bot.on('physicsTick', () => {
-    lookAtBlaze()
     nearbyPlayers()
   })
 
