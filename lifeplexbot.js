@@ -2,7 +2,8 @@ const mineflayer = require('mineflayer')
 const botCode = (bot) => {
     bot.once('spawn', () => {
         console.log(bot.username + ' is on!!')
-        bot.chat('/login a$9fkm54#')
+        setTimeout(() => bot.chat('/login a$9fkm54#'), 2000)
+        setTimeout(() => bot.chat('/vanish'), 5000)
     })
 
     bot.on('messagestr', (msg) => {
