@@ -9,8 +9,9 @@ const botCode = (bot) => {
 const connectBot = (username) => {
     const bot = mineflayer.createBot({
         host: 'lifeplex.aternos.me',
+        port: 63256,
         username: username,
-        version: '1.18.2'
+        version: '1.19.1'
     })
 
     bot.once('end', () => {
