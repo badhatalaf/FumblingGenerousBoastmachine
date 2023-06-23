@@ -44,6 +44,7 @@ function botcode(bot, game, mail) {
       }
     }, 2000)
     setInterval(lookAtBlaze, 5000)
+    setInterval(nearbyPlayers, 2000)
   }
 
   const stopMoving = () => {
@@ -150,10 +151,6 @@ function botcode(bot, game, mail) {
     const pos = blazeEntity.position.offset(0, blazeEntity.height / 3, 0)
     bot.lookAt(pos)
   }
-
-  bot.on('physicsTick', () => {
-    nearbyPlayers()
-  })
 
   const nearbyPlayers = () => {
     const distance = 500
